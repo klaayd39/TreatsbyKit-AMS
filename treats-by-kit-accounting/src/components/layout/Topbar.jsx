@@ -49,7 +49,10 @@ export default function Topbar({ mobileOpen, onMenu }) {
           <Menu className="size-5" />
         </button>
         <p className="truncate text-sm text-muted">
-          <span className="font-display text-base font-semibold text-ink lg:hidden">Treats by Kit</span>
+          <span className="inline-flex items-center gap-2 font-display text-base font-semibold text-ink lg:hidden">
+            <img src="/logo.png" alt="" className="size-7 rounded-lg object-cover ring-1 ring-line" />
+            Treats by Kit
+          </span>
           <span className="hidden lg:inline">Accounting, inventory, and production</span>
         </p>
       </div>

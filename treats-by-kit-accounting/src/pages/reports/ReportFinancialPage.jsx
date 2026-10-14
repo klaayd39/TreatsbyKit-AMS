@@ -87,7 +87,7 @@ export default function ReportFinancialPage() {
                   <XAxis dataKey="name" tick={{ fill: '#5e5348', fontSize: 11 }} interval={0} angle={-20} height={70} textAnchor="end" />
                   <YAxis tick={{ fill: '#5e5348', fontSize: 12 }} tickFormatter={(value) => formatSignedMoney(value)} width={88} />
                   <Tooltip formatter={(value) => formatSignedMoney(value)} />
-                  <Bar dataKey="amount" name="Amount" fill="#8f4332" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="amount" name="Amount" fill="#3d6e90" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </ChartCard>
@@ -189,7 +189,7 @@ export default function ReportFinancialPage() {
                 <XAxis dataKey="label" tick={{ fill: '#5e5348', fontSize: 11 }} interval={0} angle={-30} height={70} textAnchor="end" />
                 <YAxis tick={{ fill: '#5e5348', fontSize: 12 }} tickFormatter={(value) => formatSignedMoney(value)} width={88} />
                 <Tooltip formatter={(value) => formatSignedMoney(value)} />
-                <Line type="monotone" dataKey="netSales" name="Net sales" stroke="#8f4332" strokeWidth={2} dot={false} />
+                <Line type="monotone" dataKey="netSales" name="Net sales" stroke="#3d6e90" strokeWidth={2} dot={false} />
                 <Line type="monotone" dataKey="netIncome" name="Net income" stroke="#5e5348" strokeWidth={2} dot={false} />
               </LineChart>
             </ResponsiveContainer>

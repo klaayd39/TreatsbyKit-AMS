@@ -10,7 +10,7 @@ import { COLLECTIONS } from '../../data/seed'
 import { getAll } from '../../data/storage'
 import { formatCurrency, formatDate, formatQuantity } from '../../utils/format'
 
-const LINE_COLORS = ['#8f4332', '#2c241c', '#8a6a4f', '#c47a5a']
+const LINE_COLORS = ['#3d6e90', '#243044', '#97afcb', '#6a8aa0']
 
 export default function ProductionCostingPage() {
   const [productId, setProductId] = useState('')

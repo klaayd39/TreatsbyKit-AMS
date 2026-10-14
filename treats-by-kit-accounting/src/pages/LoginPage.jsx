@@ -17,7 +17,8 @@ export default function LoginPage() {
   if (!configured) {
     return (
       <main className="mx-auto flex min-h-screen max-w-lg flex-col justify-center px-6">
-        <h1 className="font-display text-3xl font-semibold text-ink">Connect Supabase</h1>
+        <img src="/logo.png" alt="" className="size-16 rounded-2xl object-cover ring-1 ring-line" />
+        <h1 className="mt-4 font-display text-3xl font-semibold text-ink">Connect Supabase</h1>
         <p className="mt-3 text-sm leading-6 text-muted">
           Copy <code>.env.example</code> to <code>.env.local</code> and set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY.
           The service role key must not be added to this app.
@@ -46,7 +47,8 @@ export default function LoginPage() {
 
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6">
-      <p className="font-display text-sm font-semibold text-accent">Treats by Kit</p>
+      <img src="/logo.png" alt="" className="size-16 rounded-2xl object-cover ring-1 ring-line" />
+      <p className="mt-4 font-display text-sm font-semibold text-accent">Treats by Kit</p>
       <h1 className="mt-2 font-display text-3xl font-semibold text-ink">Sign in</h1>
       <p className="mt-2 text-sm text-muted">Accounts are created by an owner in the Supabase dashboard. There is no public sign-up.</p>
       <form className="mt-6 space-y-4" onSubmit={submit}>

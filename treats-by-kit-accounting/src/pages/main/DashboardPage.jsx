@@ -156,7 +156,7 @@ export default function DashboardPage() {
               <XAxis dataKey="label" tick={{ fill: '#5e5348', fontSize: 11 }} interval={4} />
               <YAxis tick={{ fill: '#5e5348', fontSize: 12 }} tickFormatter={(value) => formatCurrency(value)} width={88} />
               <Tooltip formatter={(value) => formatCurrency(value)} />
-              <Bar dataKey="sales" name="Sales" fill="#8f4332" radius={[4, 4, 0, 0]} />
+              <Bar dataKey="sales" name="Sales" fill="#3d6e90" radius={[4, 4, 0, 0]} />
               <Bar dataKey="grossProfit" name="Gross profit" fill="#c47a4a" radius={[4, 4, 0, 0]} />
             </BarChart>
           </ResponsiveContainer>
@@ -169,7 +169,7 @@ export default function DashboardPage() {
                 <XAxis type="number" tick={{ fill: '#5e5348', fontSize: 12 }} />
                 <YAxis type="category" dataKey="name" width={100} tick={{ fill: '#5e5348', fontSize: 12 }} />
                 <Tooltip formatter={(value) => formatQuantity(value)} />
-                <Bar dataKey="units" name="Units" fill="#8f4332" radius={[0, 4, 4, 0]} />
+                <Bar dataKey="units" name="Units" fill="#3d6e90" radius={[0, 4, 4, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}
@@ -184,7 +184,7 @@ export default function DashboardPage() {
                 <XAxis dataKey="name" tick={{ fill: '#5e5348', fontSize: 11 }} interval={0} angle={-20} height={70} textAnchor="end" />
                 <YAxis tick={{ fill: '#5e5348', fontSize: 12 }} tickFormatter={(value) => formatCurrency(value)} width={88} />
                 <Tooltip formatter={(value) => formatCurrency(value)} />
-                <Bar dataKey="amount" name="Amount" fill="#8f4332" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="amount" name="Amount" fill="#3d6e90" radius={[4, 4, 0, 0]} />
               </BarChart>
             </ResponsiveContainer>
           )}

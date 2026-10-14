@@ -102,7 +102,7 @@ export default function SalesReportsPage() {
                   <XAxis dataKey="label" tick={{ fill: '#5e5348', fontSize: 12 }} />
                   <YAxis tick={{ fill: '#5e5348', fontSize: 12 }} tickFormatter={(value) => formatCurrency(value)} width={88} />
                   <Tooltip formatter={(value) => formatCurrency(value)} />
-                  <Bar dataKey="total" name="Sales" fill="#8f4332" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="total" name="Sales" fill="#3d6e90" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>

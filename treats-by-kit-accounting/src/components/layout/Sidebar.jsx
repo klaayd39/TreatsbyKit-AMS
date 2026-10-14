@@ -50,9 +50,7 @@ export default function Sidebar({ mobileOpen, onClose }) {
       >
         <div className="flex h-16 shrink-0 items-center justify-between gap-2 border-b border-line px-4">
           <div className="flex items-center gap-3">
-            <span className="flex size-9 items-center justify-center rounded-xl bg-accent font-display text-sm font-semibold text-white">
-              TK
-            </span>
+            <img src="/logo.png" alt="" className="size-10 rounded-xl object-cover ring-1 ring-line" />
             <span>
               <span className="block font-display text-[15px] leading-tight font-semibold text-ink">
                 Treats by Kit

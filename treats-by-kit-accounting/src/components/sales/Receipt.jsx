@@ -18,7 +18,7 @@ function receiptHtml({ sale, items, customer, payments }) {
     .join('')
   const change = payments.reduce((sum, payment) => sum + (Number(payment.changeDue) || 0), 0)
   return `<!DOCTYPE html><html><head><title>${sale.saleNumber}</title><style>
-    body { font-family: "Avenir Next", "Segoe UI", sans-serif; color: #2c241c; margin: 0; }
+    body { font-family: "Avenir Next", "Segoe UI", sans-serif; color: #243044; margin: 0; }
     .receipt { width: 72mm; margin: 0 auto; padding: 8px; }
     h1 { font-size: 18px; text-align: center; margin: 0; }
     p { margin: 4px 0; font-size: 12px; text-align: center; }
