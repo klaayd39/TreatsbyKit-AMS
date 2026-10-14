@@ -51,11 +51,8 @@ export default function Sidebar({ mobileOpen, onClose }) {
         <div className="flex h-16 shrink-0 items-center justify-between gap-2 border-b border-line px-4">
           <div className="flex items-center gap-3">
             <img src="/logo.png" alt="" className="size-10 rounded-xl object-cover ring-1 ring-line" />
-            <span>
-              <span className="block font-display text-[15px] leading-tight font-semibold text-ink">
-                Treats by Kit
-              </span>
-              <span className="block text-xs text-muted">Bakery system</span>
+            <span className="font-display text-[15px] leading-tight font-semibold text-ink">
+              Treats by Kit
             </span>
           </div>
           <button
