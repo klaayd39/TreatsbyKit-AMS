@@ -1,5 +1,5 @@
 import { productionDraft } from '../accounting/posting'
-import { generateId } from '../utils/id'
+import { generateId, toUuid } from '../utils/id'
 import { getAverageCost, getStockOnHand, roundQuantity } from '../utils/inventory'
 import {
   calculateBatchCost,
@@ -71,7 +71,7 @@ export async function saveRecipe(draft) {
     yieldQuantity: roundQuantity(yieldQuantity),
     notes: draft.notes?.trim() ?? '',
     ingredients: ingredients.map((line) => ({
-      id: line.id || generateId('ingredient'),
+      id: toUuid(line.id),
       itemId: line.itemId,
       quantity: roundQuantity(line.quantity),
     })),
@@ -102,7 +102,7 @@ export function prepareBatchLines(recipe, quantity, movements = getAll(COLLECTIO
   return scaleRecipe(recipe, quantity).map((line) => {
     const item = items.find((entry) => entry.id === line.itemId)
     return {
-      id: generateId('line'),
+      id: generateId(),
       itemId: line.itemId,
       name: item?.name || 'Unknown item',
       unit: item?.unit || '',
@@ -150,7 +150,7 @@ export async function saveBatch(draft) {
   const lines = sourceLines.map((line) => {
     const item = items.find((entry) => entry.id === line.itemId)
     return {
-      id: line.id || generateId('line'),
+      id: toUuid(line.id),
       itemId: line.itemId,
       expectedQty: roundQuantity(line.expectedQty),
       actualQty: roundQuantity(line.actualQty),

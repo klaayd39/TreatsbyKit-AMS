@@ -8,7 +8,7 @@ import {
   isDeposit,
   saleDraft,
 } from '../accounting/posting'
-import { generateId } from '../utils/id'
+import { toUuid } from '../utils/id'
 import { getAverageCost, getStockOnHand, roundQuantity } from '../utils/inventory'
 import { sum } from '../utils/money'
 import {
@@ -182,7 +182,7 @@ function buildLines(rawLines, discount) {
   if (Object.keys(errors).length) return { errors }
 
   const snapshot = (rawLines || []).map((line) => ({
-    id: line.id || generateId('line'),
+    id: toUuid(line.id),
     itemId: line.itemId,
     quantity: roundQuantity(line.quantity),
     unitPrice: roundMoney(line.unitPrice),

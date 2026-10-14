@@ -1,7 +1,7 @@
 import { receivingDraft, supplierPaymentDraft } from '../accounting/posting'
 import { postDraft } from './journal'
 import { PAYMENT_METHODS } from './sales'
-import { generateId } from '../utils/id'
+import { toUuid } from '../utils/id'
 import { roundQuantity } from '../utils/inventory'
 import { round2, sum, toCentavos } from '../utils/money'
 import { COLLECTIONS } from './seed'
@@ -160,7 +160,7 @@ function normalizeInvoice(draft) {
     notes: (draft.notes || '').trim(),
     amountPaid: 0,
     lines: draft.lines.map((line) => ({
-      id: line.id || generateId('line'),
+      id: toUuid(line.id),
       itemId: line.itemId,
       quantity: roundQuantity(line.quantity),
       unitPrice: cents(line.unitPrice) / 100,
