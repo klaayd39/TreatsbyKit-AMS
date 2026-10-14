@@ -1,0 +1,6 @@
+project_id = "treats-by-kit-accounting"
+
+[auth]
+enable_signup = false
+site_url = "http://127.0.0.1:5173"
+additional_redirect_urls = ["http://127.0.0.1:5173"]

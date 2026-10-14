@@ -1,0 +1,12 @@
+{
+  "name": "treats",
+  "private": true,
+  "scripts": {
+    "dev": "npm run dev --prefix treats-by-kit-accounting",
+    "build": "npm run build --prefix treats-by-kit-accounting",
+    "lint": "npm run lint --prefix treats-by-kit-accounting",
+    "preview": "npm run preview --prefix treats-by-kit-accounting",
+    "test": "npm run test --prefix treats-by-kit-accounting",
+    "test:watch": "npm run test:watch --prefix treats-by-kit-accounting"
+  }
+}

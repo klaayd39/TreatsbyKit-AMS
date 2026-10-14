@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
+  --color-canvas: #f4efe8;
+  --color-ink: #2c241c;
+  --color-muted: #5e5348;
+  --color-line: #e5dcd1;
+  --color-accent: #8f4332;
+  --color-accent-soft: #f8ece7;
+  --color-sidebar: #fffdfb;
+  --color-sand: #efe6dc;
+}
+
+@layer base {
+  html {
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background: #f0d3c6;
+    color: var(--color-ink);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--color-line);
+    text-align: left;
+  }
+
+  th {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+}
+
+@media print {
+  body {
+    background: white;
+  }
+
+  aside,
+  header,
+  .no-print {
+    display: none !important;
+  }
+
+  main {
+    max-width: none;
+    padding: 0;
+  }
+}
