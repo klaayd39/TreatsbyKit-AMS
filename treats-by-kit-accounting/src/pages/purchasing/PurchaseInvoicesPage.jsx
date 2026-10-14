@@ -250,8 +250,8 @@ export default function PurchaseInvoicesPage() {
   return (
     <>
       <PageHeader
-        title="Purchase Invoices"
-        description="Bills from suppliers. Stock is updated only when you receive the items."
+        title="Supplier bills"
+        description="The bill does not add stock. Receive the items on the bill to add them."
         actions={<Button onClick={openCreate}>New invoice</Button>}
       />
 

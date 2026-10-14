@@ -25,10 +25,10 @@ export default function Modal({ title, onClose, children, size = 'md' }) {
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-2xl border border-line bg-white shadow-xl ${width}`}
+        className={`relative flex max-h-[90vh] w-full flex-col overflow-hidden rounded-[1.75rem] border border-line bg-canvas shadow-[0_24px_80px_-32px_rgba(58,69,80,0.45)] ${width}`}
       >
         <div className="flex items-center justify-between gap-3 border-b border-line px-5 py-4">
-          <h2 id={titleId} className="text-lg font-semibold text-ink">
+          <h2 id={titleId} className="font-display text-3xl font-medium leading-none text-accent">
             {title}
           </h2>
           <button

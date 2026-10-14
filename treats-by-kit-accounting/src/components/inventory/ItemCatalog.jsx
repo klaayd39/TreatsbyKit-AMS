@@ -165,11 +165,10 @@ export default function ItemCatalog({
             <tr>
               <th scope="col">Item</th>
               <th scope="col">Unit</th>
-              <th scope="col" className="text-right">Reorder level</th>
-              <th scope="col" className="text-right">On hand</th>
+              <th scope="col" className="text-right">Warn at</th>
+              <th scope="col" className="text-right">In stock</th>
               <th scope="col" className="text-right">Average cost</th>
               {showSellingPrice ? <th scope="col" className="text-right">Selling price</th> : null}
-              <th scope="col">Stock</th>
               <th scope="col">
                 <span className="sr-only">Actions</span>
               </th>
@@ -177,7 +176,8 @@ export default function ItemCatalog({
           </thead>
           <tbody>
             {rows.map((item) => {
-              const lowStock = item.onHand <= Number(item.reorderLevel ?? 0)
+              const reorderLevel = Number(item.reorderLevel ?? 0)
+              const stockNote = item.onHand <= 0 ? 'None in stock' : reorderLevel > 0 && item.onHand <= reorderLevel ? 'Running low' : ''
               return (
                 <tr key={item.id}>
                   <td>
@@ -191,7 +191,10 @@ export default function ItemCatalog({
                   </td>
                   <td>{item.unit}</td>
                   <td className="text-right tabular-nums">{formatQuantity(item.reorderLevel)}</td>
-                  <td className="text-right tabular-nums">{formatQuantity(item.onHand)}</td>
+                  <td className="text-right">
+                    <span className="tabular-nums">{formatQuantity(item.onHand)}</span>
+                    {stockNote ? <span className="mt-1 block"><Badge tone="warning">{stockNote}</Badge></span> : null}
+                  </td>
                   <td className="text-right tabular-nums">
                     {item.averageCost === null ? '—' : formatCurrency(item.averageCost)}
                   </td>
@@ -204,7 +207,6 @@ export default function ItemCatalog({
                       )}
                     </td>
                   ) : null}
-                  <td>{lowStock ? <Badge tone="warning">Low stock</Badge> : '—'}</td>
                   <td className="text-right">
                     <Button variant="ghost" onClick={() => openEdit(item)}>
                       Edit
@@ -275,7 +277,7 @@ export default function ItemCatalog({
                 />
               </Field>
             ) : null}
-            <Field label="Reorder level" htmlFor="item-reorder" error={errors.reorderLevel}>
+            <Field label="Warn when stock falls to" htmlFor="item-reorder" error={errors.reorderLevel} hint="Use 0 if you do not want a warning.">
               <input
                 id="item-reorder"
                 className={controlClass}
@@ -297,8 +299,7 @@ export default function ItemCatalog({
       {historyItem ? (
         <Modal title={`${historyItem.name} movements`} onClose={() => setHistoryItem(null)} size="lg">
           <p className="mb-4 text-sm text-muted">
-            On hand {formatQuantity(getStockOnHand(historyItem.id, movements))} {historyItem.unit}. Balance is the
-            stock after each movement.
+            In stock {formatQuantity(getStockOnHand(historyItem.id, movements))} {historyItem.unit}. Each line below is one change.
           </p>
           {historyRows.length === 0 ? (
             <EmptyState title="No movements yet" description="Stock changes for this item will show up here." />

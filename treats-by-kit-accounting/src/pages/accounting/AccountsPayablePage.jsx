@@ -93,7 +93,7 @@ export default function AccountsPayablePage() {
   return (
     <>
       <PageHeader
-        title="Accounts Payable"
+        title="Bills to pay"
         description="Payables come from received purchase invoices and unpaid expenses. Record a payment to reduce the balance."
       />
       {notice ? <p className="mb-4 rounded-xl bg-sand px-4 py-3 text-sm text-ink">{notice}</p> : null}

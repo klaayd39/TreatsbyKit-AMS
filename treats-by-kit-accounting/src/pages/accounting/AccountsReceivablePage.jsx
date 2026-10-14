@@ -78,7 +78,7 @@ export default function AccountsReceivablePage() {
   return (
     <>
       <PageHeader
-        title="Accounts Receivable"
+        title="Customer tabs"
         description="Open sales are amounts still owed. A payment on a voided sale stays as a customer credit until you refund it."
       />
       {notice ? <p className="mb-4 rounded-xl bg-sand px-4 py-3 text-sm text-ink">{notice}</p> : null}

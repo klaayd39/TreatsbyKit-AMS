@@ -62,7 +62,7 @@ export default function ReportFinancialPage() {
 
   return (
     <>
-      <PageHeader title="Financial Reports" description="Expenses, margins, aging, and cash are read from posted journals and open balances." />
+      <PageHeader title="Money report" description="Shop costs, profit, unpaid bills, and cash." />
       <DateRangePicker preset={range.preset} from={range.from} to={range.to} today={range.today} onChange={range.onChange} />
       <ReportTabs tabs={TABS} value={tab} onChange={setTab} />
 

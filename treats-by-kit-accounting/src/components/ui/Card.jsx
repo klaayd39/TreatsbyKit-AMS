@@ -2,7 +2,7 @@ export default function Card({ title, value, hint, icon: Icon, children, classNa
   const hasValue = value !== undefined && value !== null
 
   return (
-    <section className={`rounded-2xl border border-line bg-white p-5 shadow-sm ${className}`}>
+    <section className={`rounded-[1.75rem] border border-line bg-sidebar p-5 ${className}`}>
       {title || Icon ? (
         <div className="flex items-start justify-between gap-3">
           {title ? <p className="text-sm font-medium text-muted">{title}</p> : <span />}

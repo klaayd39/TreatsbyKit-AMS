@@ -205,22 +205,22 @@ export default function OrdersPage() {
     const preview = calculateCart(form.lines, { type: form.discountType, value: form.discountValue })
     return (
       <>
-        <PageHeader title="New order" description="Orders do not change stock until they are completed." />
+        <PageHeader title="New order" description="Pick the customer, then the pies. Stock changes only when you complete the order." />
         <form className="space-y-6" onSubmit={submitOrder} noValidate>
           {errors.form ? <p className="rounded-lg bg-red-50 px-3 py-2 text-sm text-red-800">{errors.form}</p> : null}
           <div className="grid gap-4 sm:grid-cols-2">
-            <Field label="Customer" htmlFor="order-customer" error={errors.customerId}>
+            <Field label="Customer" htmlFor="order-customer" error={errors.customerId} hint={customers.length === 0 ? 'Add the person this order is for.' : 'Choose their name. The blank row is not a customer.'}>
               <div className="flex gap-2">
-                <select id="order-customer" className={controlClass} value={form.customerId} onChange={(event) => setForm({ ...form, customerId: event.target.value })}>
-                  <option value="">Select a customer</option>
+                <select id="order-customer" className={`${controlClass} min-w-0 flex-1`} value={form.customerId} onChange={(event) => setForm({ ...form, customerId: event.target.value })}>
+                  <option value="">Choose a customer</option>
                   {customers.map((customer) => (
                     <option key={customer.id} value={customer.id}>{customer.name}</option>
                   ))}
                 </select>
-                <Button variant="secondary" onClick={() => setCustomersOpen(true)}>Add</Button>
+                <Button variant="secondary" className="shrink-0" onClick={() => setCustomersOpen(true)}>Add</Button>
               </div>
             </Field>
-            <Field label="Fulfillment" htmlFor="order-type" error={errors.fulfillmentType}>
+            <Field label="Pickup or delivery" htmlFor="order-type" error={errors.fulfillmentType}>
               <select id="order-type" className={controlClass} value={form.fulfillmentType} onChange={(event) => setForm({ ...form, fulfillmentType: event.target.value })}>
                 <option value="pickup">Pickup</option>
                 <option value="delivery">Delivery</option>
@@ -336,7 +336,7 @@ export default function OrdersPage() {
     <>
       <PageHeader
         title="Orders"
-        description="Customer orders placed ahead of time. Stock changes only when an order is completed."
+        description="Orders for later. Stock changes only when you complete one."
         actions={
           <div className="flex gap-2">
             <Button variant="secondary" onClick={() => setCustomersOpen(true)}>Customers</Button>

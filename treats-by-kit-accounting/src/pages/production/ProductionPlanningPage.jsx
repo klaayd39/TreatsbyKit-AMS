@@ -57,12 +57,12 @@ export default function ProductionPlanningPage() {
     return (
       <>
         <PageHeader
-          title="Production Planning"
-          description="See what a batch would need. Planning does not change stock."
+          title="Plan a bake"
+          description="See what a batch would need. Nothing is saved, and stock does not change."
         />
         <EmptyState
           title="No recipes yet"
-          description="Add a product recipe before planning a batch."
+          description="Add a recipe before planning a batch."
           action={
             <Link to="/production/recipes" className={buttonClass()}>
               Add a recipe
@@ -76,8 +76,8 @@ export default function ProductionPlanningPage() {
   return (
     <>
       <PageHeader
-        title="Production Planning"
-        description="See what a batch would need. Planning does not change stock and is not saved."
+        title="Plan a bake"
+        description="See what a batch would need. Nothing is saved, and stock does not change."
       />
       <div className="mb-6 grid gap-4 sm:grid-cols-2">
         <Field label="Recipe" htmlFor="plan-recipe">

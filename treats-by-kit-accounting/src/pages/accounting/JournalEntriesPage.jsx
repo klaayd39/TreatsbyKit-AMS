@@ -134,7 +134,7 @@ export default function JournalEntriesPage() {
   return (
     <>
       <PageHeader
-        title="Journal Entries"
+        title="Journal"
         description="Posted entries stay on the books. A reversal swaps the debits and credits and links back to the original."
         actions={
           <div className="flex flex-wrap gap-2">

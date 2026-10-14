@@ -56,7 +56,7 @@ export default function EmployeesPage() {
   return (
     <>
       <PageHeader
-        title="Employees & User Roles"
+        title="Staff"
         description="Create the person in Supabase under Authentication, then Users. They appear here as inactive viewers until you activate them."
       />
       {error ? <p className="mb-4 text-sm text-danger">{error}</p> : null}

@@ -54,7 +54,7 @@ export default function AuditLogsPage() {
 
   return (
     <>
-      <PageHeader title="Audit Logs" description="Every insert, update, and delete on the business tables." />
+      <PageHeader title="Activity" description="Who changed a record, and when." />
       <div className="mb-4 grid gap-3 sm:grid-cols-3">
         <Field label="From" htmlFor="audit-from">
           <input id="audit-from" type="date" className={controlClass} value={filters.from} onChange={(event) => { setPage(1); setFilters({ ...filters, from: event.target.value }) }} />

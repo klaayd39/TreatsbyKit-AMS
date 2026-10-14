@@ -101,7 +101,7 @@ export default function ChartOfAccountsPage() {
   return (
     <>
       <PageHeader
-        title="Chart of Accounts"
+        title="Account list"
         description="System accounts used by automatic posting stay locked. Deactivate an account that already has journal lines."
         actions={<Button onClick={openCreate}>Add account</Button>}
       />

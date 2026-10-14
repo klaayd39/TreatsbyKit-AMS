@@ -4,10 +4,10 @@ export default function PackagingMaterialsPage() {
   return (
     <ItemCatalog
       category="packaging"
-      title="Packaging Materials"
-      description="Boxes, packs, and other packaging. On hand is computed from stock movements."
-      emptyTitle="No packaging materials yet"
-      emptyDescription="Add a packaging item to start tracking stock."
+      title="Packaging"
+      description="Boxes and packs. In stock goes up when a supplier delivery is received."
+      emptyTitle="No packaging yet"
+      emptyDescription="Add boxes or packs if you want to track them."
     />
   )
 }

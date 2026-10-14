@@ -64,13 +64,35 @@ export default function DashboardPage() {
   return (
     <>
       <PageHeader
-        title="Dashboard"
-        description="Today's trade, this month's result, and anything that needs attention."
+        title="Today"
+        description="Take an order at the counter, check pickups, and see what sold."
         actions={profile?.role === 'owner' && import.meta.env.VITE_ENABLE_DEMO === 'true' ? (
           <Button variant="secondary" disabled={saving} onClick={onLoadDemo}>Load demo data</Button>
         ) : null}
       />
       {notice ? <p className="mb-4 rounded-xl border border-line bg-white px-4 py-3 text-sm text-ink">{notice}</p> : null}
+
+      {getAll(COLLECTIONS.SALES).length === 0 ? (
+        <section className="mb-4 rounded-[1.75rem] border border-line bg-sidebar p-5">
+          <h2 className="font-display text-3xl font-medium leading-none text-accent">Open the shop</h2>
+          <ol className="mt-3 space-y-3 text-sm">
+            <li>
+              <Link className="font-medium text-accent" to="/inventory/finished-goods">1. Put items on the menu</Link>
+              <p className="text-muted">Name and price. That is what the counter sells.</p>
+            </li>
+            <li>
+              <Link className="font-medium text-accent" to="/production/batches">2. Bake what you can sell today</Link>
+              <p className="text-muted">In stock is what the counter is allowed to sell.</p>
+            </li>
+            <li>
+              <Link className="font-medium text-accent" to="/sales/pos">3. Take payment at the counter</Link>
+              <span className="text-muted"> or </span>
+              <Link className="font-medium text-accent" to="/sales/orders">write a pickup order</Link>
+              <p className="text-muted">A pickup needs the customer’s name. Stock changes when the order is completed.</p>
+            </li>
+          </ol>
+        </section>
+      ) : null}
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
         <LinkedCard to="/sales/reports">
@@ -79,16 +101,16 @@ export default function DashboardPage() {
           <p className="mt-1 text-sm text-muted">{model.todayCount ? `${model.todayCount} sales today` : 'No sales yet today'}</p>
         </LinkedCard>
         <LinkedCard to="/sales/reports">
-          <p className="text-sm font-medium text-muted">Today's Gross Profit</p>
+          <p className="text-sm font-medium text-muted">Today's profit</p>
           <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">{formatSignedMoney(model.todayGrossProfit)}</p>
-          <p className="mt-1 text-sm text-muted">After cost of goods sold</p>
+          <p className="mt-1 text-sm text-muted">Sales minus what the food cost</p>
         </LinkedCard>
         <LinkedCard to="/accounting/financial-statements?tab=income">
-          <p className="text-sm font-medium text-muted">This Month's Net Income</p>
+          <p className="text-sm font-medium text-muted">This month</p>
           <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">{formatSignedMoney(model.netIncome)}</p>
-          <p className="mt-1 text-sm text-muted">From posted journals</p>
+          <p className="mt-1 text-sm text-muted">What the shop kept</p>
         </LinkedCard>
-        <section className="rounded-2xl border border-line bg-white p-5 shadow-sm">
+        <section className="rounded-[1.75rem] border border-line bg-sidebar p-5 shadow-sm">
           <div className="flex items-start justify-between gap-3">
             <Link to="/accounting/financial-statements?tab=cash" className="text-sm font-medium text-muted hover:text-accent">Cash Balance</Link>
             <span className="flex size-9 items-center justify-center rounded-xl bg-accent-soft text-accent"><Wallet className="size-4" aria-hidden="true" /></span>
@@ -107,49 +129,49 @@ export default function DashboardPage() {
           </details>
         </section>
         <LinkedCard to="/accounting/accounts-receivable">
-          <p className="text-sm font-medium text-muted">Receivables</p>
+          <p className="text-sm font-medium text-muted">Customer tabs</p>
           <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">{formatCurrency(model.receivables)}</p>
-          <p className="mt-1 text-sm text-muted">Open sales</p>
+          <p className="mt-1 text-sm text-muted">Still to collect</p>
         </LinkedCard>
         <LinkedCard to="/accounting/accounts-payable">
-          <p className="text-sm font-medium text-muted">Payables</p>
+          <p className="text-sm font-medium text-muted">Bills to pay</p>
           <p className="mt-3 text-3xl font-semibold tracking-tight tabular-nums">{formatCurrency(model.payables)}</p>
-          <p className="mt-1 text-sm text-muted">Open invoices and unpaid expenses</p>
+          <p className="mt-1 text-sm text-muted">Suppliers and unpaid shop costs</p>
         </LinkedCard>
       </div>
 
       <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-5">
-        <Link to="/inventory/reports?tab=low" className="rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-accent">
-          <span className="flex items-center gap-2 font-medium"><TriangleAlert className="size-4 text-accent" aria-hidden="true" /> Low stock</span>
+        <Link to="/inventory/reports?tab=low" className="rounded-[1.75rem] border border-line bg-sidebar px-4 py-3 text-sm hover:border-accent">
+          <span className="flex items-center gap-2 font-medium"><TriangleAlert className="size-4 text-accent" aria-hidden="true" /> Running low</span>
           <span className="mt-1 block text-muted">{model.lowStock.length} {model.lowStock.length === 1 ? 'item' : 'items'}</span>
         </Link>
-        <Link to="/accounting/accounts-payable" className="rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-accent">
-          <span className="font-medium">Overdue payables</span>
+        <Link to="/accounting/accounts-payable" className="rounded-[1.75rem] border border-line bg-sidebar px-4 py-3 text-sm hover:border-accent">
+          <span className="font-medium">Late bills</span>
           <span className="mt-1 block tabular-nums text-muted">{formatCurrency(sum(model.overduePayables.map((row) => row.balance)))}</span>
         </Link>
-        <Link to="/accounting/accounts-receivable" className="rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-accent">
-          <span className="font-medium">Overdue receivables</span>
+        <Link to="/accounting/accounts-receivable" className="rounded-[1.75rem] border border-line bg-sidebar px-4 py-3 text-sm hover:border-accent">
+          <span className="font-medium">Late tabs</span>
           <span className="mt-1 block tabular-nums text-muted">{formatCurrency(sum(model.overdueReceivables.map((row) => row.balance)))}</span>
         </Link>
-        <Link to="/sales/orders" className="rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-accent">
+        <Link to="/sales/orders" className="rounded-[1.75rem] border border-line bg-sidebar px-4 py-3 text-sm hover:border-accent">
           <span className="font-medium">Orders due in 3 days</span>
           <span className="mt-1 block text-muted">{model.dueOrders.length}</span>
         </Link>
-        <Link to="/accounting/general-ledger" className="rounded-2xl border border-line bg-white px-4 py-3 text-sm hover:border-accent">
-          <span className="font-medium">Integrity checks</span>
+        <Link to="/accounting/general-ledger" className="rounded-[1.75rem] border border-line bg-sidebar px-4 py-3 text-sm hover:border-accent">
+          <span className="font-medium">Books check</span>
           <span className="mt-1 block"><Badge tone={model.integrityPass ? 'success' : 'danger'}>{model.integrityPass ? 'Pass' : 'Fail'}</Badge></span>
         </Link>
       </div>
 
       <div className="mt-6 flex flex-wrap gap-2">
-        <Link className={buttonClass('primary')} to="/sales/pos"><ShoppingCart className="size-4" aria-hidden="true" /> New Sale</Link>
-        <Link className={buttonClass('secondary')} to="/purchasing/invoices"><Receipt className="size-4" aria-hidden="true" /> New Purchase Invoice</Link>
-        <Link className={buttonClass('secondary')} to="/production/batches"><Factory className="size-4" aria-hidden="true" /> New Production Batch</Link>
+        <Link className={buttonClass('primary')} to="/sales/pos"><ShoppingCart className="size-4" aria-hidden="true" /> Sell now</Link>
+        <Link className={buttonClass('secondary')} to="/purchasing/invoices"><Receipt className="size-4" aria-hidden="true" /> Supplier bill</Link>
+        <Link className={buttonClass('secondary')} to="/production/batches"><Factory className="size-4" aria-hidden="true" /> Bake a batch</Link>
         <Link className={buttonClass('secondary')} to="/accounting/expenses"><Banknote className="size-4" aria-hidden="true" /> New Expense</Link>
       </div>
 
       <div className="mt-6 grid gap-6 xl:grid-cols-2">
-        <ChartCard title="Sales and gross profit, last 30 days">
+        <ChartCard title="Sales and profit, last 30 days">
           <ResponsiveContainer width="100%" height="100%">
             <BarChart data={model.trend} margin={{ top: 8, right: 8, left: 8, bottom: 0 }}>
               <CartesianGrid stroke="#e5dcd1" />
@@ -191,7 +213,7 @@ export default function DashboardPage() {
         </ChartCard>
       </div>
 
-      <section className="mt-6 rounded-2xl border border-line bg-white p-5">
+      <section className="mt-6 rounded-[1.75rem] border border-line bg-sidebar p-5">
         <h2 className="text-sm font-medium text-muted">Recent activity</h2>
         {model.activity.length === 0 ? <p className="mt-3 text-sm text-muted">Sales, purchases, production, expenses, and manual journal entries will show here.</p> : (
           <ul className="mt-3 divide-y divide-line">

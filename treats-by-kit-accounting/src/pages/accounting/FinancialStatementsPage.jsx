@@ -52,7 +52,7 @@ export default function FinancialStatementsPage() {
   return (
     <>
       <PageHeader
-        title="Financial Statements"
+        title="Statements"
         description="Built from posted journal entries. Reversals stay in the totals, so a voided sale nets to zero."
         actions={<Button className="no-print" variant="secondary" onClick={() => window.print()}>Print</Button>}
       />

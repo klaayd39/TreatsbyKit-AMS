@@ -104,7 +104,7 @@ export default function SalesHistoryPage() {
 
   return (
     <>
-      <PageHeader title="Sales History" description="Completed sales stay on the ledger. Voiding posts reversing movements." />
+      <PageHeader title="Past sales" description="Completed sales stay on the books. Voiding puts the items back." />
       {notice ? <p className="mb-4 rounded-lg bg-sand px-3 py-2 text-sm text-ink">{notice}</p> : null}
       {sales.length === 0 ? (
         <EmptyState title="No sales yet" description="Complete a sale from the register or from an order." />

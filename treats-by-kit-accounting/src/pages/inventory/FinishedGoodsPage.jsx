@@ -7,11 +7,11 @@ export default function FinishedGoodsPage() {
     <ItemCatalog
       category="finished_good"
       categoryOptions={FINISHED_CATEGORIES}
-      title="Finished Goods"
-      description="Products from production. On hand comes from stock movements, average cost from production output, and selling price is what the POS charges."
+      title="Menu"
+      description="What the counter can sell. Set a price. In stock stays 0 until the kitchen bakes a batch."
       showSellingPrice
-      emptyTitle="No finished goods yet"
-      emptyDescription="Add a product before you can build a recipe for it."
+      emptyTitle="No products yet"
+      emptyDescription="Add something you sell, such as Buko Pie, and set its price."
     />
   )
 }

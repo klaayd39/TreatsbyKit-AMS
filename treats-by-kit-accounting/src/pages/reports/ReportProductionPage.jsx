@@ -55,7 +55,7 @@ export default function ReportProductionPage() {
 
   return (
     <>
-      <PageHeader title="Production Reports" description="Completed batches only. Cancelled batches are listed apart from the totals." />
+      <PageHeader title="Kitchen report" description="Finished bakes only. Cancelled batches are listed apart from the totals." />
       <DateRangePicker preset={range.preset} from={range.from} to={range.to} today={range.today} onChange={range.onChange} />
       <ReportTabs tabs={TABS} value={tab} onChange={setTab} />
 

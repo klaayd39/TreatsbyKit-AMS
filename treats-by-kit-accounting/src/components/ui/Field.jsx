@@ -1,5 +1,5 @@
 export const controlClass =
-  'w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink outline-none placeholder:text-muted/70 focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:bg-sand disabled:text-muted'
+  'w-full rounded-2xl border border-line bg-sidebar px-3 py-2.5 text-sm text-ink outline-none placeholder:text-muted/70 focus:border-accent focus:ring-2 focus:ring-accent/20 disabled:cursor-not-allowed disabled:bg-sand disabled:text-muted'
 
 export default function Field({ label, htmlFor, error, hint, children }) {
   return (

@@ -24,11 +24,11 @@ export default function Sidebar({ mobileOpen, onClose }) {
   const visible = navigation
     .map((group) => ({
       ...group,
-      items: group.items.filter((item) => canSeePath(profile?.role, item.path)),
+      items: group.items.filter((item) => !item.hidden && canSeePath(profile?.role, item.path)),
     }))
     .filter((group) => group.items.length > 0)
   const [openGroups, setOpenGroups] = useState(() =>
-    Object.fromEntries(visible.map((group) => [group.id, true])),
+    Object.fromEntries(visible.map((group) => [group.id, group.id === 'main' || group.id === 'sales' || group.id === 'inventory'])),
   )
 
   function toggleGroup(groupId) {
@@ -50,8 +50,8 @@ export default function Sidebar({ mobileOpen, onClose }) {
       >
         <div className="flex h-16 shrink-0 items-center justify-between gap-2 border-b border-line px-4">
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="" className="size-10 rounded-xl object-cover ring-1 ring-line" />
-            <span className="font-display text-[15px] leading-tight font-semibold text-ink">
+            <img src="/logo.png" alt="" className="size-11 rounded-2xl object-cover" />
+            <span className="font-script text-3xl leading-none font-semibold text-accent">
               Treats by Kit
             </span>
           </div>
@@ -73,7 +73,7 @@ export default function Sidebar({ mobileOpen, onClose }) {
                 <div key={group.id}>
                   <button
                     type="button"
-                    className="flex w-full items-center justify-between rounded-md px-2 py-1.5 text-left text-[11px] font-semibold tracking-[0.16em] text-muted uppercase hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+                    className="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-left font-display text-xl leading-none text-accent hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                     aria-expanded={open}
                     aria-controls={`nav-group-${group.id}`}
                     onClick={() => toggleGroup(group.id)}
@@ -95,7 +95,7 @@ export default function Sidebar({ mobileOpen, onClose }) {
                             onClick={onClose}
                             className={({ isActive }) =>
                               [
-                                'flex items-center gap-2.5 rounded-lg px-2.5 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
+                                'flex items-center gap-2.5 rounded-full px-3 py-2 text-sm transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
                                 isActive
                                   ? 'bg-accent-soft font-medium text-accent'
                                   : 'text-ink hover:bg-sand',

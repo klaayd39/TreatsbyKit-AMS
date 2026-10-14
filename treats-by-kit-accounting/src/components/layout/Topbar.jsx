@@ -36,7 +36,7 @@ export default function Topbar({ mobileOpen, onMenu }) {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-20 flex h-16 items-center justify-between gap-3 border-b border-line bg-canvas px-4 sm:px-6 print:hidden">
+    <header className="sticky top-0 z-20 flex h-16 items-center justify-between gap-3 border-b border-line/80 bg-canvas/85 px-4 backdrop-blur-md sm:px-6 print:hidden">
       <div className="flex min-w-0 items-center gap-2">
         <button
           type="button"
@@ -49,11 +49,11 @@ export default function Topbar({ mobileOpen, onMenu }) {
           <Menu className="size-5" />
         </button>
         <p className="truncate text-sm text-muted">
-          <span className="inline-flex items-center gap-2 font-display text-base font-semibold text-ink lg:hidden">
+          <span className="inline-flex items-center gap-2 font-script text-2xl leading-none font-semibold text-accent lg:hidden">
             <img src="/logo.png" alt="" className="size-7 rounded-lg object-cover ring-1 ring-line" />
             Treats by Kit
           </span>
-          <span className="hidden lg:inline">Accounting, inventory, and production</span>
+          <span className="hidden font-script text-2xl leading-none font-semibold text-accent lg:inline">Treats by Kit</span>
         </p>
       </div>
       <div className="flex items-center gap-2">

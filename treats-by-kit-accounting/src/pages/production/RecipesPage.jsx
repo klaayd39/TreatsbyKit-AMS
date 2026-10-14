@@ -156,8 +156,8 @@ export default function RecipesPage() {
   return (
     <>
       <PageHeader
-        title="Product Recipes (BOM)"
-        description="Each ingredient quantity is for one yield. A yield of 1 with 2 eggs is 2 eggs per pie."
+        title="Recipes"
+        description="Quantities are for one pie. A yield of 1 with 2 eggs means 2 eggs per pie."
         actions={<Button onClick={openCreate}>Add recipe</Button>}
       />
       {notice ? <p className="mb-4 rounded-lg bg-sand px-3 py-2 text-sm text-ink">{notice}</p> : null}
@@ -165,7 +165,7 @@ export default function RecipesPage() {
       {recipes.length === 0 ? (
         <EmptyState
           title="No recipes yet"
-          description="Add a bill of materials for a finished good."
+          description="Add the ingredients for one product."
           action={<Button onClick={openCreate}>Add recipe</Button>}
         />
       ) : (

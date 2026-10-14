@@ -89,8 +89,8 @@ export default function StockMovementsPage() {
   return (
     <>
       <PageHeader
-        title="Stock Movements"
-        description="The ledger is permanent. Correct a count by posting a new adjustment."
+        title="Stock history"
+        description="Every change to in stock. A count correction is a new adjustment, and old lines stay."
         actions={<Button onClick={openAdjustment}>Stock adjustment</Button>}
       />
 

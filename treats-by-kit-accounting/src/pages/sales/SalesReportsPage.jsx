@@ -41,7 +41,7 @@ export default function SalesReportsPage() {
   return (
     <>
       <PageHeader
-        title="Sales Reports"
+        title="Sales today"
         description="Voided sales are left out. Units sold answers how many of each product, including Buko Pie, moved in this period."
       />
       <DateRangePicker preset={range.preset} from={range.from} to={range.to} today={range.today} onChange={range.onChange} />
@@ -55,8 +55,8 @@ export default function SalesReportsPage() {
           <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
             <Card title="Total sales" value={formatCurrency(summary.totalSales)} hint={`${summary.saleCount} sales`} />
             <Card title="Discounts" value={formatCurrency(summary.totalDiscounts)} />
-            <Card title="COGS" value={formatCurrency(summary.cogs)} />
-            <Card title="Gross profit" value={formatCurrency(summary.grossProfit)} />
+            <Card title="Food cost" value={formatCurrency(summary.cogs)} />
+            <Card title="Profit" value={formatCurrency(summary.grossProfit)} />
             <Card title="Unpaid balance" value={formatCurrency(summary.unpaidBalance)} />
             <Card title="Number of sales" value={summary.saleCount} />
           </div>

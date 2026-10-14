@@ -37,37 +37,37 @@ import {
 export const navigation = [
   {
     id: 'main',
-    label: 'Main',
+    label: 'Today',
     items: [
-      { id: 'dashboard', label: 'Dashboard', path: '/', icon: LayoutDashboard },
-      { id: 'notifications', label: 'Notifications', path: '/notifications', icon: Bell },
+      { id: 'dashboard', label: 'Today', path: '/', icon: LayoutDashboard },
+      { id: 'notifications', label: 'Alerts', path: '/notifications', icon: Bell },
     ],
   },
   {
     id: 'sales',
-    label: 'Sales',
+    label: 'Counter',
     items: [
-      { id: 'pos', label: 'Point of Sale (POS)', path: '/sales/pos', icon: ShoppingCart },
+      { id: 'pos', label: 'Sell now', path: '/sales/pos', icon: ShoppingCart },
       { id: 'orders', label: 'Orders', path: '/sales/orders', icon: ClipboardList },
-      { id: 'sales-history', label: 'Sales History', path: '/sales/history', icon: History },
-      { id: 'sales-reports', label: 'Sales Reports', path: '/sales/reports', icon: ChartColumn },
+      { id: 'sales-history', label: 'Past sales', path: '/sales/history', icon: History },
+      { id: 'sales-reports', label: 'Sales today', path: '/sales/reports', icon: ChartColumn },
     ],
   },
   {
     id: 'inventory',
-    label: 'Inventory',
+    label: 'Menu and stock',
     items: [
-      { id: 'raw-materials', label: 'Raw Materials', path: '/inventory/raw-materials', icon: Wheat },
-      { id: 'finished-goods', label: 'Finished Goods', path: '/inventory/finished-goods', icon: Cake },
+      { id: 'raw-materials', label: 'Ingredients', path: '/inventory/raw-materials', icon: Wheat },
+      { id: 'finished-goods', label: 'Menu', path: '/inventory/finished-goods', icon: Cake },
       {
         id: 'packaging-materials',
-        label: 'Packaging Materials',
+        label: 'Packaging',
         path: '/inventory/packaging',
         icon: Package,
       },
       {
         id: 'stock-movements',
-        label: 'Stock Movements',
+        label: 'Stock history',
         path: '/inventory/movements',
         icon: ArrowLeftRight,
       },
@@ -81,7 +81,7 @@ export const navigation = [
   },
   {
     id: 'purchasing',
-    label: 'Purchasing',
+    label: 'Buying',
     items: [
       { id: 'suppliers', label: 'Suppliers', path: '/purchasing/suppliers', icon: Truck },
       {
@@ -89,16 +89,17 @@ export const navigation = [
         label: 'Purchase Orders',
         path: '/purchasing/orders',
         icon: FileText,
+        hidden: true,
       },
       {
         id: 'purchase-invoices',
-        label: 'Purchase Invoices',
+        label: 'Supplier bills',
         path: '/purchasing/invoices',
         icon: Receipt,
       },
       {
         id: 'receiving-records',
-        label: 'Receiving Records',
+        label: 'Goods received',
         path: '/purchasing/receiving',
         icon: PackageCheck,
       },
@@ -106,29 +107,29 @@ export const navigation = [
   },
   {
     id: 'production',
-    label: 'Production',
+    label: 'Kitchen',
     items: [
       {
         id: 'recipes',
-        label: 'Product Recipes (BOM)',
+        label: 'Recipes',
         path: '/production/recipes',
         icon: BookOpen,
       },
       {
         id: 'production-planning',
-        label: 'Production Planning',
+        label: 'Plan a bake',
         path: '/production/planning',
         icon: CalendarDays,
       },
       {
         id: 'production-batches',
-        label: 'Production Batches',
+        label: 'Bake a batch',
         path: '/production/batches',
         icon: Layers,
       },
       {
         id: 'production-costing',
-        label: 'Production Costing',
+        label: 'Batch costs',
         path: '/production/costing',
         icon: Calculator,
       },
@@ -136,42 +137,24 @@ export const navigation = [
   },
   {
     id: 'accounting',
-    label: 'Accounting',
+    label: 'Money',
     items: [
       {
-        id: 'chart-of-accounts',
-        label: 'Chart of Accounts',
-        path: '/accounting/chart-of-accounts',
-        icon: ListTree,
-      },
-      {
-        id: 'journal-entries',
-        label: 'Journal Entries',
-        path: '/accounting/journal-entries',
-        icon: BookBookmark,
-      },
-      {
-        id: 'general-ledger',
-        label: 'General Ledger',
-        path: '/accounting/general-ledger',
-        icon: Library,
-      },
-      {
         id: 'accounts-payable',
-        label: 'Accounts Payable',
+        label: 'Bills to pay',
         path: '/accounting/accounts-payable',
         icon: Wallet,
       },
       {
         id: 'accounts-receivable',
-        label: 'Accounts Receivable',
+        label: 'Customer tabs',
         path: '/accounting/accounts-receivable',
         icon: HandCoins,
       },
       { id: 'expenses', label: 'Expenses', path: '/accounting/expenses', icon: Banknote },
       {
         id: 'financial-statements',
-        label: 'Financial Statements',
+        label: 'Statements',
         path: '/accounting/financial-statements',
         icon: ChartPie,
       },
@@ -179,24 +162,43 @@ export const navigation = [
   },
   {
     id: 'reports',
-    label: 'Reports',
+    label: 'Books',
     items: [
-      { id: 'report-sales', label: 'Sales Reports', path: '/reports/sales', icon: TrendingUp },
+      {
+        id: 'chart-of-accounts',
+        label: 'Account list',
+        path: '/accounting/chart-of-accounts',
+        icon: ListTree,
+      },
+      {
+        id: 'journal-entries',
+        label: 'Journal',
+        path: '/accounting/journal-entries',
+        icon: BookBookmark,
+      },
+      {
+        id: 'general-ledger',
+        label: 'Ledger',
+        path: '/accounting/general-ledger',
+        icon: Library,
+      },
+      { id: 'report-sales', label: 'Sales Reports', path: '/reports/sales', icon: TrendingUp, hidden: true },
       {
         id: 'report-inventory',
         label: 'Inventory Reports',
         path: '/reports/inventory',
         icon: Warehouse,
+        hidden: true,
       },
       {
         id: 'report-production',
-        label: 'Production Reports',
+        label: 'Kitchen report',
         path: '/reports/production',
         icon: Factory,
       },
       {
         id: 'report-financial',
-        label: 'Financial Reports',
+        label: 'Money report',
         path: '/reports/financial',
         icon: ChartLine,
       },
@@ -204,21 +206,21 @@ export const navigation = [
   },
   {
     id: 'administration',
-    label: 'Administration',
+    label: 'Shop',
     items: [
       {
         id: 'employees',
-        label: 'Employees & User Roles',
+        label: 'Staff',
         path: '/admin/employees',
         icon: Users,
       },
       {
         id: 'business-settings',
-        label: 'Business Settings',
+        label: 'Settings',
         path: '/admin/settings',
         icon: Settings,
       },
-      { id: 'audit-logs', label: 'Audit Logs', path: '/admin/audit-logs', icon: ScrollText },
+      { id: 'audit-logs', label: 'Activity', path: '/admin/audit-logs', icon: ScrollText },
     ],
   },
 ]

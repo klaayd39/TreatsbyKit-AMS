@@ -123,16 +123,16 @@ export default function ProductionBatchesPage() {
   return (
     <>
       <PageHeader
-        title="Production Batches"
-        description="Completed batches stay on the ledger. Cancelling posts reversing movements."
+        title="Bake a batch"
+        description="Saving a batch uses ingredients and adds the pies to In stock."
         actions={<Button onClick={openCreate}>New batch</Button>}
       />
       {notice ? <p className="mb-4 rounded-lg bg-sand px-3 py-2 text-sm text-ink">{notice}</p> : null}
 
       {batches.length === 0 ? (
         <EmptyState
-          title="No production batches yet"
-          description="Create a batch to use ingredients and add finished goods to stock."
+          title="No batches yet"
+          description="Bake a batch to use ingredients and add pies to In stock."
           action={<Button onClick={openCreate}>New batch</Button>}
         />
       ) : (

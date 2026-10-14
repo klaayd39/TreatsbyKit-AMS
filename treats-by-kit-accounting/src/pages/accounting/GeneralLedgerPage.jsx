@@ -52,7 +52,7 @@ export default function GeneralLedgerPage() {
   return (
     <>
       <PageHeader
-        title="General Ledger"
+        title="Ledger"
         description="Balances come from posted journal lines. Reversed entries stay in the ledger together with the reversing entry."
       />
       <Card title="Accounting checks" className="mb-6">

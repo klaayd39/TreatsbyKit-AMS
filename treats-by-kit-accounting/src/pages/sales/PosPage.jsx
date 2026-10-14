@@ -115,8 +115,11 @@ export default function PosPage() {
 
   const cartForm = (
     <form className="flex h-full flex-col" onSubmit={submit} noValidate>
-      <div className="flex items-center justify-between gap-3 border-b border-line px-4 py-3">
-        <h2 className="text-lg font-semibold text-ink">Cart</h2>
+        <div className="flex items-end justify-between gap-3 px-5 pt-5 pb-2">
+        <div>
+          <p className="font-script text-2xl leading-none text-accent">Counter</p>
+          <h2 className="font-display text-4xl font-medium leading-none text-accent">Your order</h2>
+        </div>
         <button type="button" className="text-sm text-muted lg:hidden" onClick={() => setCartOpen(false)}>
           Close
         </button>
@@ -146,7 +149,7 @@ export default function PosPage() {
                     <div className="flex items-center gap-2">
                       <button
                         type="button"
-                        className="inline-flex size-11 items-center justify-center rounded-lg border border-line text-lg"
+                        className="inline-flex size-12 items-center justify-center rounded-full text-lg text-accent ring-1 ring-accent/40"
                         aria-label={`Decrease ${line.name}`}
                         onClick={() => setQuantity(line.id, String(Math.max(1, (Number(line.quantity) || 1) - 1)))}
                       >
@@ -161,7 +164,7 @@ export default function PosPage() {
                       />
                       <button
                         type="button"
-                        className="inline-flex size-11 items-center justify-center rounded-lg border border-line text-lg disabled:opacity-40"
+                        className="inline-flex size-12 items-center justify-center rounded-full text-lg text-accent ring-1 ring-accent/40 disabled:opacity-40"
                         aria-label={`Increase ${line.name}`}
                         disabled={(Number(line.quantity) || 0) >= onHand}
                         onClick={() => setQuantity(line.id, String((Number(line.quantity) || 0) + 1))}
@@ -235,6 +238,9 @@ export default function PosPage() {
                 value={amountReceived}
                 onChange={(event) => setAmountReceived(event.target.value)}
               />
+              <button type="button" className="mt-2 text-sm text-accent" onClick={() => setAmountReceived(String(cart.total))}>
+                Exact cash
+              </button>
             </Field>
           </div>
         )}
@@ -243,17 +249,17 @@ export default function PosPage() {
         ) : null}
       </div>
       <div className="border-t border-line p-4">
-        <Button type="submit" className="min-h-12 w-full" disabled={saving || lines.length === 0}>Complete Sale</Button>
+        <Button type="submit" className="h-12 w-full font-display text-xl" disabled={saving || lines.length === 0}>Place order</Button>
       </div>
     </form>
   )
 
   return (
     <div className="pb-24 lg:pb-0">
-      <PageHeader title="Point of Sale" description="Sell finished goods. Stock is reduced when the sale is completed." />
+      <PageHeader title="The Menu" description="Tap Add to put something on the order. In stock drops when the sale is completed." />
       {products.length === 0 ? (
         <EmptyState
-          title="No finished goods yet"
+          title="Nothing on the menu yet"
           description="Add a product and a selling price before using the register."
           action={<Link to="/inventory/finished-goods" className={buttonClass()}>Finished goods</Link>}
         />
@@ -273,7 +279,7 @@ export default function PosPage() {
             {visible.length === 0 ? (
               <EmptyState title="No products match" description="Try another name." />
             ) : (
-              <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+              <div className="grid grid-cols-1 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
                 {visible.map((item) => {
                   const ready = priceSet(item)
                   const disabled = !ready || item.onHand <= 0
@@ -283,12 +289,17 @@ export default function PosPage() {
                       type="button"
                       disabled={disabled}
                       onClick={() => addProduct(item)}
-                      className="flex min-h-28 flex-col items-start justify-between rounded-2xl border border-line bg-white p-4 text-left shadow-sm disabled:cursor-not-allowed disabled:opacity-50"
+                      className="flex flex-col items-center px-2 py-4 text-center disabled:cursor-not-allowed disabled:opacity-40"
                     >
-                      <span className="font-medium">{item.name}</span>
-                      <span className="text-sm text-muted">
-                        {ready ? formatCurrency(item.sellingPrice) : 'Not set'}
-                        <span className="block">{item.onHand <= 0 ? 'Out of stock' : `${formatQuantity(item.onHand)} ${item.unit}`}</span>
+                      <span className="font-display text-[1.65rem] font-medium leading-tight text-accent">{item.name}</span>
+                      <span className="mt-2 text-sm text-muted">
+                        {item.onHand <= 0 ? 'None in stock' : `${formatQuantity(item.onHand)} ${item.unit} in stock`}
+                      </span>
+                      <span className="mt-3 font-display text-2xl leading-none text-accent tabular-nums">
+                        {ready ? formatCurrency(item.sellingPrice) : 'No price'}
+                      </span>
+                      <span className="mt-4 inline-flex h-11 items-center rounded-full px-5 font-display text-lg text-accent">
+                        {disabled ? 'Unavailable' : 'Add'}
                       </span>
                     </button>
                   )
@@ -297,7 +308,7 @@ export default function PosPage() {
             )}
           </section>
           <aside
-            className={`${cartOpen ? 'max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 max-lg:z-40 max-lg:h-[85vh] max-lg:rounded-t-2xl' : 'max-lg:hidden'} overflow-hidden border border-line bg-white lg:sticky lg:top-20 lg:z-auto lg:block lg:max-h-[calc(100vh-6rem)] lg:rounded-2xl`}
+            className={`${cartOpen ? 'max-lg:fixed max-lg:inset-x-0 max-lg:bottom-0 max-lg:z-40 max-lg:h-[85vh] max-lg:rounded-t-[1.75rem]' : 'max-lg:hidden'} overflow-hidden border border-line bg-canvas lg:sticky lg:top-20 lg:z-auto lg:block lg:max-h-[calc(100vh-6rem)] lg:rounded-[1.75rem]`}
           >
             {cartForm}
           </aside>
@@ -305,9 +316,9 @@ export default function PosPage() {
       )}
 
       {products.length > 0 ? (
-        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white p-3 lg:hidden">
-          <button type="button" className="flex min-h-12 w-full items-center justify-between rounded-xl bg-accent px-4 text-white" onClick={() => setCartOpen(true)}>
-            <span>Cart ({formatQuantity(count)})</span>
+        <div className="fixed inset-x-0 bottom-0 z-30 border-t border-line/80 bg-canvas/95 p-3 backdrop-blur lg:hidden">
+          <button type="button" className="flex h-12 w-full items-center justify-between rounded-full bg-accent px-5 text-white" onClick={() => setCartOpen(true)}>
+            <span>Your order ({formatQuantity(count)})</span>
             <span className="tabular-nums">{formatCurrency(cart.total)}</span>
           </button>
         </div>

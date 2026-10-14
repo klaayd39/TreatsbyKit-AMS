@@ -1,16 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Avenir Next", "Segoe UI", ui-sans-serif, system-ui, sans-serif;
-  --font-display: "Iowan Old Style", Palatino, "Palatino Linotype", Georgia, serif;
-  --color-canvas: #f7f0e8;
-  --color-ink: #243044;
-  --color-muted: #5a6a7a;
-  --color-line: #d5e1ec;
-  --color-accent: #3d6e90;
-  --color-accent-soft: #e6eef5;
-  --color-sidebar: #f7fafc;
-  --color-sand: #e7eef4;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-script: "Caveat", cursive;
+  --color-canvas: #f7f4ee;
+  --color-ink: #3a4550;
+  --color-muted: #7d8b98;
+  --color-line: #e4ddd2;
+  --color-accent: #5d84a6;
+  --color-accent-soft: #e8f1f6;
+  --color-sidebar: #fffcf8;
+  --color-sand: #efeae1;
 }
 
 @layer base {
@@ -21,10 +22,12 @@
   body {
     margin: 0;
     min-height: 100vh;
-    background: var(--color-canvas);
+    background-color: var(--color-canvas);
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E");
     color: var(--color-ink);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   #root {
@@ -32,7 +35,7 @@
   }
 
   ::selection {
-    background: #d4e4f0;
+    background: #d5e4ee;
     color: var(--color-ink);
   }
 

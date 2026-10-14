@@ -27,7 +27,7 @@ export default function NotificationsPage() {
   return (
     <>
       <PageHeader
-        title="Notifications"
+        title="Alerts"
         description="Raised from current stock, balances, orders, and the books. Dismissed items stay hidden until the condition clears and comes back."
         actions={<Button variant="secondary" onClick={markAllRead}>Mark all as read</Button>}
       />

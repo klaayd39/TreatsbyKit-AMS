@@ -115,7 +115,7 @@ export default function BusinessSettingsPage() {
   return (
     <>
       <PageHeader
-        title="Business Settings"
+        title="Settings"
         description="Entries dated on or before the lock date cannot be created. Currency is Philippine peso."
       />
       <form className="max-w-xl space-y-4 rounded-2xl border border-line bg-white p-5" onSubmit={save}>

@@ -74,7 +74,7 @@ export default function ProductionCostingPage() {
   return (
     <>
       <PageHeader
-        title="Production Costing"
+        title="Batch costs"
         description="Costs are the snapshot stored on each completed batch."
       />
 

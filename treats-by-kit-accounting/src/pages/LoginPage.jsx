@@ -48,8 +48,8 @@ export default function LoginPage() {
   return (
     <main className="mx-auto flex min-h-screen max-w-md flex-col justify-center px-6">
       <img src="/logo.png" alt="" className="size-16 rounded-2xl object-cover ring-1 ring-line" />
-      <p className="mt-4 font-display text-sm font-semibold text-accent">Treats by Kit</p>
-      <h1 className="mt-2 font-display text-3xl font-semibold text-ink">Sign in</h1>
+      <p className="mt-4 font-script text-4xl leading-none font-semibold text-accent">Treats by Kit</p>
+      <h1 className="mt-3 font-display text-4xl font-medium leading-none text-accent">Sign in</h1>
       <p className="mt-2 text-sm text-muted">Accounts are created by an owner in the Supabase dashboard. There is no public sign-up.</p>
       <form className="mt-6 space-y-4" onSubmit={submit}>
         <Field label="Email" htmlFor="email">

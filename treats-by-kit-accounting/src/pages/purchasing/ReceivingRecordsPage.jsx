@@ -41,8 +41,8 @@ export default function ReceivingRecordsPage() {
   return (
     <>
       <PageHeader
-        title="Receiving Records"
-        description="Goods received against purchase invoices. Each receipt adds purchase movements to stock."
+        title="Goods received"
+        description="Deliveries you have checked in. Each one adds to In stock."
       />
       {rows.length === 0 ? (
         <EmptyState
